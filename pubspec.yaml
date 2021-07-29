@@ -1,13 +1,11 @@
 name: dotup_dart_logger
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# homepage: https://www.example.com
+description: Small library for logging.
+version: 0.1.0
+homepage: https://dotup.de
+repository: https://github.com/dotupNET/dotup_dart_logger
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
-
-# dependencies:
-#   path: ^1.8.0
 
 dev_dependencies:
   pedantic: ^1.10.0
