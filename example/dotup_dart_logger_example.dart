@@ -9,9 +9,8 @@ void main() {
 }
 
 void doIt() {
-  final conso = ConsoleLogWriter(LogLevel.Info | LogLevel.Error);
 
-  LoggerManager.addLogWriter(conso);
+  LoggerManager.console(LogLevel.Info | LogLevel.Error);
 
   final logger = Logger('test');
 
