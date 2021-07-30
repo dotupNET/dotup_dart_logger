@@ -25,3 +25,7 @@
 ## 0.1.6
 
 - readme
+
+## 0.1.7
+
+- error log with error as Object

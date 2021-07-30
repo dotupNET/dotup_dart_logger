@@ -54,7 +54,7 @@ class Logger implements ILogger {
   }
 
   @override
-  void error(Error error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source}) {
+  void error(Object error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source}) {
     log(LogLevel.Error, error.toString(), error: error);
   }
 

@@ -3,7 +3,7 @@ abstract class ILogger {
   void debug(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
   void info(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
   void warn(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
-  void error(Error error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source});
+  void error(Object error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source});
   void exception(Exception error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source});
 }
 
