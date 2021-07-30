@@ -12,13 +12,13 @@ class LogLevel implements Comparable {
 
   const LogLevel._(this.name, this.value);
 
-  static LogLevel None = _None;
-  static LogLevel Debug = _Debug;
-  static LogLevel Info = _Info;
-  static LogLevel Warn = _Warn;
-  static LogLevel Error = _Error;
-  static LogLevel Exception = _Exception;
-  static LogLevel All = _All;
+  static const LogLevel None = _None;
+  static const LogLevel Debug = _Debug;
+  static const LogLevel Info = _Info;
+  static const LogLevel Warn = _Warn;
+  static const LogLevel Error = _Error;
+  static const LogLevel Exception = _Exception;
+  static const LogLevel All = _All;
 
   bool isLevel(LogLevel other) {
     if (value == 0 || other.value == 0) {

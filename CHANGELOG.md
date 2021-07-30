@@ -9,3 +9,7 @@
 ## 0.1.2
 
 - Fix: Wrong ANSI colors
+
+## 0.1.3
+
+- LogLevel as const
