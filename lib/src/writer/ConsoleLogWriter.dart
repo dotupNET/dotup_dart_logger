@@ -1,10 +1,10 @@
-import 'package:dotup_dart_logger/src/ILogFormater.dart';
+import 'package:dotup_dart_logger/src/interfaces/ILogFormater.dart';
 import 'package:dotup_dart_logger/src/LogLevel.dart';
 
 import 'package:dotup_dart_logger/src/LogEntry.dart';
 import 'package:dotup_dart_logger/src/formater/PipeSeparatedLogFormater.dart';
 
-import '../ILogWriter.dart';
+import '../interfaces/ILogWriter.dart';
 
 class ConsoleLogWriter implements ILogWriter {
   @override

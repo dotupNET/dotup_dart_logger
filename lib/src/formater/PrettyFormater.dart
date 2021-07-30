@@ -1,42 +1,49 @@
 import 'package:dotup_dart_logger/src/LogEntry.dart';
 
-import '../ILogFormater.dart';
+import '../interfaces/ILogFormater.dart';
 import '../LogLevel.dart';
-import 'AnsiColor.dart';
+import 'AnsiEscape.dart';
 
-class PrettyFormater implements ILogFormater{
-   PrettyFormater({
-    this.showColors,
-  }) ;
+const _debugColor = AnsiEscape(foregroundColor: 15, italic: true);
+const _infoColor = AnsiEscape(foregroundColor: 81);
+const _warnColor = AnsiEscape(foregroundColor: 208);
+const _errorColor = AnsiEscape(foregroundColor: 196);
+const _exceptionColor = AnsiEscape(backgroundColor: 196, foregroundColor: 15);
 
-  final bool? showColors;
+class PrettyFormater implements ILogFormater {
+  final bool showColors;
+  final bool useSymbols;
 
-  bool get _colorize => showColors ?? false;
+  PrettyFormater({
+    this.showColors = true,
+    this.useSymbols = true,
+  });
 
   static final _levelColors = {
-    LogLevel.Debug: AnsiColor(foregroundColor: AnsiColor.grey(0.5), italic: true),
-    LogLevel.Info: AnsiColor(foregroundColor: 35),
-    LogLevel.Warn: AnsiColor(foregroundColor: 214),
-    LogLevel.Error: AnsiColor(foregroundColor: 196),
+    LogLevel.Debug: _debugColor,
+    LogLevel.Info: _infoColor,
+    LogLevel.Warn: _warnColor,
+    LogLevel.Error: _errorColor,
+    LogLevel.Exception: _exceptionColor,
   };
 
-  static final _levelPrefixes = {
-    LogLevel.Debug: '🐛 ',
-    LogLevel.Info: '👻 ',
-    LogLevel.Warn: '⚠️ ',
-    LogLevel.Error: '‼️ ',
+  static final _levelSymbols = {
+    LogLevel.Debug: '🐞 ',
+    LogLevel.Info: 'ℹ️ ',
+    LogLevel.Warn: '🦺 ',
+    LogLevel.Error: '😩 ',
+    LogLevel.Exception: '💥 ',
   };
 
   static const _defaultPrefix = '🤔 ';
 
-
-
-  String? levelPrefix(LogLevel level) {
-    return _levelPrefixes[level];
+  String levelPrefix(LogLevel level) {
+    return useSymbols == false ? level.name : (_levelSymbols[level] ?? _defaultPrefix);
   }
 
-  AnsiColor? levelColor(LogLevel level) {
-    return _levelColors[level];
+  AnsiEscape? levelColor(LogLevel level) {
+    final result = _levelColors[level];
+    return result;
   }
 
   @override
@@ -44,10 +51,9 @@ class PrettyFormater implements ILogFormater{
     final _time = record.timeStamp.toIso8601String().split('T')[1];
     final _logLevel = record.logLevel;
 
-    final _color = _colorize ? levelColor(record.logLevel) ?? AnsiColor() : AnsiColor();
-    final _prefix = levelPrefix(record.logLevel) ?? _defaultPrefix;
+    final _color = showColors ? levelColor(record.logLevel) ?? AnsiEscape() : AnsiEscape();
+    final _prefix = levelPrefix(record.logLevel);
 
     return _color('$_prefix $_time ${record.loggerName} ${record.message} $_logLevel');
-
   }
 }
