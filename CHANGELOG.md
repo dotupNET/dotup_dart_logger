@@ -1,3 +1,11 @@
 ## 0.1.0
 
 - Initial version.
+
+## 0.1.1
+
+- Logger cache (by name)
+
+## 0.1.2
+
+- Fix: Wrong ANSI colors

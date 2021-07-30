@@ -4,26 +4,53 @@ import 'package:dotup_dart_logger/src/Logger.dart';
 import 'package:dotup_dart_logger/src/formater/PrettyFormater.dart';
 import 'package:dotup_dart_logger/src/writer/ConsoleLogWriter.dart';
 
+class Trouble extends Error {
+  final String message;
+  Trouble(this.message);
+
+  @override
+  String toString() {
+    return message;
+  }
+}
+
+class Problem implements Exception {
+  final String? message;
+
+  Problem([this.message]);
+
+  @override
+  String toString() {
+    if (message == null) return 'Exception';
+    return 'Exception: $message';
+  }
+}
+
 void main() {
   doIt();
 }
 
 void doIt() {
+  final consoleWriter = ConsoleLogWriter(LogLevel.Info | LogLevel.Error);
+  LoggerManager.addLogWriter(consoleWriter);
 
-  LoggerManager.console(LogLevel.Info | LogLevel.Error);
+  var logger = Logger('dotup');
 
-  final logger = Logger('test');
-
-  logger.debug('DEBBBUUUG');
+  // Only info and error are printed
+  logger.debug("Where's the bug?");
   logger.error(UnimplementedError());
-  logger.info('infooooo');
-  logger.console(() => 'dfdsdf');
-  // logger.log('');
+  logger.info('Starting');
+  logger.console(() => 'Expensive log entry');
   logger.warn('warning');
 
+  LoggerManager.removeLogWriter(consoleWriter);
 
-final c2 = ConsoleLogWriter(LogLevel.Debug,formater:  PrettyFormater(showColors:true));
+  final c2 = ConsoleLogWriter(LogLevel.All, formater: PrettyFormater(showColors: true));
   LoggerManager.addLogWriter(c2);
-  logger.debug('DEBBBUUUG');
-  
+  logger = Logger('PP');
+  logger.debug('PrettyFormater with colors');
+  logger.info('PrettyFormater with colors');
+  logger.warn('PrettyFormater with colors');
+  logger.error(Trouble('PrettyFormater with colors'));
+  logger.exception(Problem('PrettyFormater with colors'));
 }

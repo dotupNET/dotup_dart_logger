@@ -2,25 +2,44 @@ import 'dart:developer' as dev;
 import 'package:dotup_dart_logger/src/LogManager.dart';
 import 'package:dotup_dart_logger/src/formater/PipeSeparatedLogFormater.dart';
 
-import 'ILogger.dart';
+import 'interfaces/ILogger.dart';
 import 'LogEntry.dart';
 import 'LogLevel.dart';
+import 'Utils.dart';
 
-///ignore: prefer_generic_function_type_aliases
-typedef void LogHandler(LogEntry logEntry);
-final _printFormater = PipeSeparatedLogFormater();
+const _printFormater = PipeSeparatedLogFormater();
 
 class Logger implements ILogger {
-  String name;
-  LogHandler logHandler;
+  late final String name;
+  late final LogHandler logHandler;
 
-  Logger(this.name, [this.logHandler = LoggerManager.writeLogEntry]);
+  static final Set<Logger> _cache = {};
 
-  void log(LogLevel level, String message,
-      {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
+  Logger.create(this.name, this.logHandler);
+
+  factory Logger(
+    String? name, {
+    LogHandler? logHandler,
+  }) {
+    name ??= 'APP';
+    var logger = _cache.firstWhereOrNull((element) => element.name == name);
+    logHandler ??= LoggerManager.writeLogEntry;
+    logger ??= Logger.create(name, logHandler);
+    return logger;
+  }
+
+  void log(
+    LogLevel level,
+    Object message, {
+    Map<String, dynamic>? data,
+    Object? error,
+    StackTrace? stackTrace,
+    String? source,
+  }) {
+    final text = message is Function ? message() : message;
     final entry = LogEntry(
         logLevel: level,
-        message: message,
+        message: text,
         data: data,
         error: error,
         source: source,
@@ -30,7 +49,7 @@ class Logger implements ILogger {
   }
 
   @override
-  void debug(String message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
+  void debug(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
     log(LogLevel.Debug, message, data: data);
   }
 
@@ -45,7 +64,7 @@ class Logger implements ILogger {
   }
 
   @override
-  void info(String message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
+  void info(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
     log(LogLevel.Info, message, data: data);
   }
 
@@ -55,7 +74,7 @@ class Logger implements ILogger {
 
     final entry = LogEntry(
         logLevel: LogLevel.None,
-        message: message.toString(),
+        message: text,
         data: data,
         error: error,
         source: source,
@@ -65,7 +84,7 @@ class Logger implements ILogger {
   }
 
   @override
-  void warn(String message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
+  void warn(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
     log(LogLevel.Warn, message, data: data);
   }
 

@@ -1,5 +1,5 @@
 import 'package:dotup_dart_logger/dotup_dart_logger.dart';
-import 'package:dotup_dart_logger/src/ILogWriter.dart';
+import 'package:dotup_dart_logger/src/interfaces/ILogWriter.dart';
 
 import 'LogEntry.dart';
 
@@ -10,6 +10,10 @@ class LoggerManager {
 
   static void console(LogLevel logLevel) {
     addLogWriter(ConsoleLogWriter(logLevel));
+  }
+
+  static void removeAllLogWriter(LogLevel logLevel) {
+    logWriters.clear();
   }
 
   static void addLogWriter(ILogWriter logWriter) {

@@ -1,5 +1,5 @@
-import 'LogEntry.dart';
-import 'LogLevel.dart';
+import '../LogEntry.dart';
+import '../LogLevel.dart';
 
 abstract class ILogWriter {
   late LogLevel logLevel;

@@ -4,6 +4,7 @@ const LogLevel _Info = LogLevel._('Info', 2);
 const LogLevel _Warn = LogLevel._('Warn', 4);
 const LogLevel _Error = LogLevel._('Error', 8);
 const LogLevel _Exception = LogLevel._('Exception', 16);
+const LogLevel _All = LogLevel._('ALL', 0x1F);
 
 class LogLevel implements Comparable {
   final int value;
@@ -17,6 +18,7 @@ class LogLevel implements Comparable {
   static LogLevel Warn = _Warn;
   static LogLevel Error = _Error;
   static LogLevel Exception = _Exception;
+  static LogLevel All = _All;
 
   bool isLevel(LogLevel other) {
     if (value == 0 || other.value == 0) {
@@ -27,12 +29,13 @@ class LogLevel implements Comparable {
   }
 
   static final List<LogLevel> values = [
-    None,
+    // None,
     Debug,
     Info,
     Warn,
     Error,
     Exception,
+    // All,
   ];
 
   LogLevel operator |(LogLevel level) {
