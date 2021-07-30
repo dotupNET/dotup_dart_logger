@@ -13,3 +13,7 @@
 ## 0.1.3
 
 - LogLevel as const
+
+## 0.1.3
+
+- CallbackLogWriter
