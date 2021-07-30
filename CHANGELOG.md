@@ -17,3 +17,7 @@
 ## 0.1.4
 
 - CallbackLogWriter
+
+## 0.1.5
+
+- export CallbackLogWriter :)
