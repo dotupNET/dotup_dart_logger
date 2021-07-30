@@ -49,3 +49,15 @@ Connecting to VM Service at http://127.0.0.1:53575/raiZraXssJM=/
 💥  07:39:22.579755 PP Exception: PrettyFormater with colors Exception
 Exited
 ```
+
+### If you'Re using Flutter: [dotup_flutter_logger](https://github.com/dotupNET/dotup_flutter_logger)
+
+
+Flutter widgets for this logger:
+
+
+<img src="https://raw.githubusercontent.com/dotupNET/dotup_flutter_logger/master/screenshots/dotup_flutter_logger_1.png" width=300>
+
+<img src="https://raw.githubusercontent.com/dotupNET/dotup_flutter_logger/master/screenshots/dotup_flutter_logger_2.png" width=300>
+
+<video src="https://raw.githubusercontent.com/dotupNET/dotup_flutter_logger/master/screenshots/dotup_flutter_logger_3.mp4" autoplay width=300>
