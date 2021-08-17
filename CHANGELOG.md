@@ -29,3 +29,7 @@
 ## 0.1.7
 
 - error log with error as Object
+
+## 0.1.8
+
+- LogEntry message to string

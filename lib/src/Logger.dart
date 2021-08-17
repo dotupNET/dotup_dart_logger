@@ -39,7 +39,7 @@ class Logger implements ILogger {
     final text = message is Function ? message() : message;
     final entry = LogEntry(
         logLevel: level,
-        message: text,
+        message: text.toString(),
         data: data,
         error: error,
         source: source,
