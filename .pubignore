@@ -2,3 +2,6 @@ screenshots
 docs
 .secret
 .secrets
+.vscode
+.gitignore
+.pubignore

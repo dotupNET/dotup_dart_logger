@@ -33,3 +33,7 @@
 ## 0.1.8
 
 - LogEntry message to string
+
+## 0.2.0
+
+- Switched to flutter_lints
