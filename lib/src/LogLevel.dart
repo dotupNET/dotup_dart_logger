@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 const LogLevel _None = LogLevel._('None', 0);
 const LogLevel _Debug = LogLevel._('Debug', 1);
 const LogLevel _Info = LogLevel._('Info', 2);
