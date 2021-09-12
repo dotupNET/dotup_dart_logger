@@ -1,7 +1,7 @@
-import 'package:dotup_dart_logger/dotup_dart_logger.dart';
-import 'package:dotup_dart_logger/src/interfaces/ILogWriter.dart';
-
 import 'LogEntry.dart';
+import 'LogLevel.dart';
+import 'interfaces/ILogWriter.dart';
+import 'writer/ConsoleLogWriter.dart';
 
 class LoggerManager {
   static final List<ILogWriter> logWriters = [];
@@ -30,15 +30,13 @@ class LoggerManager {
         return writer.logLevel.isLevel(logEntry.logLevel);
       },
     );
-    writers.forEach(
-      (element) {
+    for (var element in writers) {
         try {
           element.write(logEntry);
         } on Error catch (error) {
           print(error.toString());
         }
-      },
-    );
+      }
   }
 
   // Frame? _getCallerFrame() {

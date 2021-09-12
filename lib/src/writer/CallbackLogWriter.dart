@@ -1,6 +1,7 @@
-import 'package:dotup_dart_logger/dotup_dart_logger.dart';
-
+import '../LogEntry.dart';
+import '../LogLevel.dart';
 import '../Utils.dart';
+import '../interfaces/ILogWriter.dart';
 
 class CallbackLogWriter implements ILogWriter {
   LogHandler callback;

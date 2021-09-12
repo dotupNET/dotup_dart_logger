@@ -1,5 +1,5 @@
-import 'package:dotup_dart_logger/src/interfaces/ILogFormater.dart';
-import 'package:dotup_dart_logger/src/LogEntry.dart';
+import '../LogEntry.dart';
+import '../interfaces/ILogFormater.dart';
 
 class PipeSeparatedLogFormater implements ILogFormater {
   const PipeSeparatedLogFormater();

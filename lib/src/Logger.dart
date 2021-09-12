@@ -1,7 +1,7 @@
 import 'dart:developer' as dev;
-import 'package:dotup_dart_logger/src/LogManager.dart';
-import 'package:dotup_dart_logger/src/formater/PipeSeparatedLogFormater.dart';
 
+import 'LogManager.dart';
+import 'formater/PipeSeparatedLogFormater.dart';
 import 'interfaces/ILogger.dart';
 import 'LogEntry.dart';
 import 'LogLevel.dart';

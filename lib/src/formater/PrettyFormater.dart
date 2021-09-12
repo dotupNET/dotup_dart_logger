@@ -1,5 +1,4 @@
-import 'package:dotup_dart_logger/src/LogEntry.dart';
-
+import '../LogEntry.dart';
 import '../interfaces/ILogFormater.dart';
 import '../LogLevel.dart';
 import 'AnsiEscape.dart';

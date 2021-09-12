@@ -1,10 +1,10 @@
-import 'package:dotup_dart_logger/src/interfaces/ILogFormater.dart';
-import 'package:dotup_dart_logger/src/LogLevel.dart';
-
-import 'package:dotup_dart_logger/src/LogEntry.dart';
-import 'package:dotup_dart_logger/src/formater/PipeSeparatedLogFormater.dart';
-
+import '../LogEntry.dart';
+import '../LogLevel.dart';
+import '../formater/PipeSeparatedLogFormater.dart';
+import '../interfaces/ILogFormater.dart';
 import '../interfaces/ILogWriter.dart';
+
+const bool prod = bool.fromEnvironment('dart.vm.product');
 
 class ConsoleLogWriter implements ILogWriter {
   @override
@@ -12,13 +12,16 @@ class ConsoleLogWriter implements ILogWriter {
 
   late ILogFormater formater;
 
-  ConsoleLogWriter(this.logLevel, {ILogFormater? formater }){
-    this.formater = formater ?? PipeSeparatedLogFormater();
+  ConsoleLogWriter(this.logLevel, {ILogFormater? formater}) {
+    this.formater = formater ?? const PipeSeparatedLogFormater();
   }
 
   @override
   void write(LogEntry logEntry) {
-    print(formater.format(logEntry));
+    if (!prod) {
+      // ignore: avoid_print
+      print(formater.format(logEntry));
+    }
   }
 
   // static WithAllLevels(): ConsoleLogWriter {

@@ -1,5 +1,3 @@
-import 'package:dotup_dart_logger/src/LogLevel.dart';
-
 import 'LogLevel.dart';
 
 class LogEntry {
