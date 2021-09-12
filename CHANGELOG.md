@@ -37,3 +37,7 @@
 ## 0.2.0
 
 - Switched to flutter_lints
+
+## 0.3.0
+
+- Switched to flutter_lints
