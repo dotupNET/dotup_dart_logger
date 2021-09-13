@@ -57,3 +57,7 @@
 ## 0.5.0
 
 - Only new version number
+
+## 0.5.1
+
+- Unicode symbols

@@ -32,7 +32,7 @@ class PrettyFormater implements ILogFormater {
     LogLevel.Debug: '🐞 ',
     LogLevel.Info: 'ℹ️ ',
     LogLevel.Warn: '🦺 ',
-    LogLevel.Error: '😩 ',
+    LogLevel.Error: '💥 ',
     LogLevel.Exception: '💥 ',
   };
 
