@@ -45,3 +45,11 @@
 ## 0.3.1
 
 - LogLevel.fromValue
+
+## 0.3.2
+
+- LogLevel: operator == removed
+
+## 0.3.3
+
+- PrettyFormater: style

@@ -67,8 +67,8 @@ class LogLevel implements Comparable {
     return LogLevel._(name, value);
   }
 
-  @override
-  bool operator ==(Object other) => other is LogLevel && value == other.value;
+  // @override
+  // bool operator ==(Object other) => other is LogLevel && value == other.value;
 
   bool operator <(LogLevel other) => value < other.value;
 
@@ -86,8 +86,8 @@ class LogLevel implements Comparable {
     return 0;
   }
 
-  @override
-  int get hashCode => value;
+  // @override
+  // int get hashCode => value;
 
   @override
   String toString() => name;

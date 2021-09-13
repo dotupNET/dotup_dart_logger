@@ -2,6 +2,7 @@ import '../LogEntry.dart';
 import '../interfaces/ILogFormater.dart';
 import '../LogLevel.dart';
 import 'AnsiEscape.dart';
+import 'PipeSeparatedLogFormater.dart';
 
 const _debugColor = AnsiEscape(foregroundColor: 15, italic: true);
 const _infoColor = AnsiEscape(foregroundColor: 81);
@@ -12,6 +13,7 @@ const _exceptionColor = AnsiEscape(backgroundColor: 196, foregroundColor: 15);
 class PrettyFormater implements ILogFormater {
   final bool showColors;
   final bool useSymbols;
+  static const formater = PipeSeparatedLogFormater();
 
   PrettyFormater({
     this.showColors = true,
@@ -46,13 +48,17 @@ class PrettyFormater implements ILogFormater {
   }
 
   @override
-  String format(LogEntry record) {
-    final _time = record.timeStamp.toIso8601String().split('T')[1];
-    final _logLevel = record.logLevel;
+  String format(LogEntry logEntry) {
+    final _time = logEntry.timeStamp.toIso8601String().split('T')[1];
 
-    final _color = showColors ? levelColor(record.logLevel) ?? AnsiEscape() : AnsiEscape();
-    final _prefix = levelPrefix(record.logLevel);
+    final _color = showColors ? levelColor(logEntry.logLevel) ?? const AnsiEscape() : const AnsiEscape();
+    final _prefix = levelPrefix(logEntry.logLevel);
 
-    return _color('$_prefix $_time ${record.loggerName} ${record.message} $_logLevel');
+    final source = logEntry.source == null ? '' : ' | source: ${logEntry.source}';
+    return _color(
+        '$_prefix $_time | name: ${logEntry.loggerName} | text: ${logEntry.message} | level: ${logEntry.logLevel}$source');
+
+    // return _color(formater.format(logEntry));
+    // _color('$_prefix $_time ${record.loggerName} ${record.message} $_logLevel');
   }
 }
