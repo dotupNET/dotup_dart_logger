@@ -53,3 +53,7 @@
 ## 0.3.3
 
 - PrettyFormater: style
+
+## 0.5.0
+
+- Only new version number
