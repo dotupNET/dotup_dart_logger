@@ -22,6 +22,27 @@ class LogLevel implements Comparable {
   static const LogLevel Exception = _Exception;
   static const LogLevel All = _All;
 
+  static LogLevel fromValue(int value) {
+    switch (value) {
+      case 1:
+        return Debug;
+      case 2:
+        return Info;
+      case 4:
+        return Warn;
+      case 8:
+        return Error;
+      case 16:
+        return Exception;
+      case 0x1F:
+      case 0xFF:
+        return All;
+
+      default:
+        return None;
+    }
+  }
+
   bool isLevel(LogLevel other) {
     if (value == 0 || other.value == 0) {
       return value == 0 && other.value == 0;

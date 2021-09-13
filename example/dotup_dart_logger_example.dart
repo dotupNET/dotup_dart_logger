@@ -23,10 +23,10 @@ class Problem implements Exception {
 }
 
 void main() {
-  doIt();
+  runExample();
 }
 
-void doIt() {
+void runExample() {
   final consoleWriter = ConsoleLogWriter(LogLevel.Info | LogLevel.Error);
   LoggerManager.addLogWriter(consoleWriter);
 
