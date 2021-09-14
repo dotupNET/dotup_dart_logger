@@ -54,13 +54,16 @@ class Logger implements ILogger {
   }
 
   @override
-  void error(Object error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source}) {
-    log(LogLevel.Error, error.toString(), error: error);
+  void error(Object? message, {Object? error, Map<String, dynamic>? data, StackTrace? stackTrace, String? source}) {
+    assert(message != null || error != null);
+    log(LogLevel.Error, message ?? error!.toString(), error: error);
   }
 
   @override
-  void exception(Exception error, {Map<String, dynamic>? data, StackTrace? stackTrace, String? source}) {
-    log(LogLevel.Exception, error.toString(), error: error);
+  void exception(Object? message,
+      {Exception? error, Map<String, dynamic>? data, StackTrace? stackTrace, String? source}) {
+    assert(message != null || error != null);
+    log(LogLevel.Exception, message ?? error!.toString(), error: error);
   }
 
   @override

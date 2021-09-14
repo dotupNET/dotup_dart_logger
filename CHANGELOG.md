@@ -61,3 +61,7 @@
 ## 0.5.1
 
 - Unicode symbols
+
+## 0.6.0
+
+- Logger: error and exception with message
