@@ -69,3 +69,7 @@
 ## 0.6.1
 
 - New: QueueLogWriter
+
+## 0.6.2
+
+- New: QueueLogWriter
