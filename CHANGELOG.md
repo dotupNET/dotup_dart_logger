@@ -65,3 +65,7 @@
 ## 0.6.0
 
 - Logger: error and exception with message
+
+## 0.6.1
+
+- New: QueueLogWriter
