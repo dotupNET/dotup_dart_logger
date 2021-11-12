@@ -73,3 +73,7 @@
 ## 0.6.2
 
 - New: QueueLogWriter
+
+## 0.6.3
+
+- New: ILoggerFactory

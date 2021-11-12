@@ -10,6 +10,7 @@ export 'src/formater/PrettyFormater.dart';
 export 'src/interfaces/ILogFormater.dart';
 export 'src/interfaces/ILogWriter.dart';
 export 'src/interfaces/ILogger.dart';
+export 'src/interfaces/i_logger_factory.dart';
 export 'src/writer/CallbackLogWriter.dart';
 export 'src/writer/ConsoleLogWriter.dart';
 export 'src/writer/queue_log_writer.dart';
