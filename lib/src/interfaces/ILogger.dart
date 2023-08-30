@@ -1,5 +1,5 @@
 abstract class ILogger {
-  void console(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
+  // void console(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
   void debug(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
   void info(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});
   void warn(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source});

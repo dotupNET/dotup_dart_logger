@@ -1,13 +1,10 @@
 import 'dart:developer' as dev;
 
-import 'LogManager.dart';
-import 'formater/PipeSeparatedLogFormater.dart';
-import 'interfaces/ILogger.dart';
 import 'LogEntry.dart';
 import 'LogLevel.dart';
+import 'LogManager.dart';
 import 'Utils.dart';
-
-const _printFormater = PipeSeparatedLogFormater();
+import 'interfaces/ILogger.dart';
 
 class Logger implements ILogger {
   late final String name;
@@ -69,21 +66,6 @@ class Logger implements ILogger {
   @override
   void info(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
     log(LogLevel.Info, message, data: data);
-  }
-
-  @override
-  void console(Object message, {Map<String, dynamic>? data, Object? error, StackTrace? stackTrace, String? source}) {
-    final text = message is Function ? message() : message;
-
-    final entry = LogEntry(
-        logLevel: LogLevel.None,
-        message: text,
-        data: data,
-        error: error,
-        source: source,
-        stackTrace: stackTrace,
-        loggerName: name);
-    print(_printFormater.format(entry));
   }
 
   @override

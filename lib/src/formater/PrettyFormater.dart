@@ -1,6 +1,6 @@
 import '../LogEntry.dart';
-import '../interfaces/ILogFormater.dart';
 import '../LogLevel.dart';
+import '../interfaces/ILogFormater.dart';
 import 'AnsiEscape.dart';
 import 'PipeSeparatedLogFormater.dart';
 
@@ -49,14 +49,14 @@ class PrettyFormater implements ILogFormater {
 
   @override
   String format(LogEntry logEntry) {
-    final _time = logEntry.timeStamp.toIso8601String().split('T')[1];
+    final time = logEntry.timeStamp.toIso8601String().split('T')[1];
 
-    final _color = showColors ? levelColor(logEntry.logLevel) ?? const AnsiEscape() : const AnsiEscape();
-    final _prefix = levelPrefix(logEntry.logLevel);
+    final color = showColors ? levelColor(logEntry.logLevel) ?? const AnsiEscape() : const AnsiEscape();
+    final prefix = levelPrefix(logEntry.logLevel);
 
     final source = logEntry.source == null ? '' : ' | source: ${logEntry.source}';
-    return _color(
-        '$_prefix $_time | name: ${logEntry.loggerName} | text: ${logEntry.message} | level: ${logEntry.logLevel}$source');
+    return color(
+        '$prefix $time | name: ${logEntry.loggerName} | text: ${logEntry.message} | level: ${logEntry.logLevel}$source');
 
     // return _color(formater.format(logEntry));
     // _color('$_prefix $_time ${record.loggerName} ${record.message} $_logLevel');

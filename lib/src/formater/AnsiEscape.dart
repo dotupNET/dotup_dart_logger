@@ -18,29 +18,29 @@ class AnsiEscape {
   /// https://en.wikipedia.org/wiki/ANSI_escape_code
   @override
   String toString() {
-    final _sb = StringBuffer();
+    final sb = StringBuffer();
 
     if (italic) {
-      _sb.write('${ansiEsc}3;m');
+      sb.write('${ansiEsc}3;m');
     }
 
     if (foregroundColor != null) {
-      _sb.write('${ansiEsc}38;5;${foregroundColor}m');
+      sb.write('${ansiEsc}38;5;${foregroundColor}m');
     }
     if (backgroundColor != null) {
-      _sb.write('${ansiEsc}48;5;${backgroundColor}m');
+      sb.write('${ansiEsc}48;5;${backgroundColor}m');
     }
 
-    if (_sb.length == ansiEsc.length) {
+    if (sb.length == ansiEsc.length) {
       return '';
     } else {
-      return _sb.toString();
+      return sb.toString();
     }
   }
 
   String call(String msg) {
     if (hasColor) {
-      return '${this}$msg$ansiDefault';
+      return '$this$msg$ansiDefault';
     } else {
       return msg;
     }
@@ -51,5 +51,4 @@ class AnsiEscape {
 
   /// Defaults the background color
   String get resetBackground => hasColor ? '${ansiEsc}49m' : '';
-
 }

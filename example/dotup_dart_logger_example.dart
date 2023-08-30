@@ -36,7 +36,6 @@ void runExample() {
   logger.debug("Where's the bug?");
   logger.error(UnimplementedError());
   logger.info('Starting');
-  logger.console(() => 'Expensive log entry');
   logger.warn('warning');
 
   LoggerManager.removeLogWriter(consoleWriter);

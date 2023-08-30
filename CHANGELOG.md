@@ -77,3 +77,7 @@
 ## 0.6.3
 
 - New: ILoggerFactory
+
+## 1.0.0
+
+- Change: Package updates

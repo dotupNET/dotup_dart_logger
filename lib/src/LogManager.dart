@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'LogEntry.dart';
 import 'LogLevel.dart';
 import 'interfaces/ILogWriter.dart';
@@ -31,12 +33,12 @@ class LoggerManager {
       },
     );
     for (var element in writers) {
-        try {
-          element.write(logEntry);
-        } on Error catch (error) {
-          print(error.toString());
-        }
+      try {
+        element.write(logEntry);
+      } on Error catch (error) {
+        log(error.toString());
       }
+    }
   }
 
   // Frame? _getCallerFrame() {
@@ -48,5 +50,4 @@ class LoggerManager {
   //   final frames = Trace.current(level.callerFrameDepthLevel).frames;
   //   return frames.isEmpty ? null : frames.first;
   // }
-
 }
